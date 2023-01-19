@@ -44,7 +44,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<fx:root prefHeight="400.0" prefWidth="640.0" type="VBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
@@ -52,11 +52,12 @@
                <children>
                   <FlowPane alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="626.0">
                      <children>
-                        <Label prefHeight="17.0" prefWidth="66.0" text="openApiUrl">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Host" wrappingWidth="62.0">
                            <FlowPane.margin>
                               <Insets left="10.0" right="10.0" />
-                           </FlowPane.margin></Label>
-                        <TextField id="urlInput" alignment="BASELINE_LEFT" prefHeight="25.0" prefWidth="542.0" promptText="https://ivtips.mypay.kz" />
+                           </FlowPane.margin>
+                        </Text>
+                        <TextField fx:id="urlInput" alignment="BASELINE_LEFT" onKeyTyped="#onKeyTyped" prefHeight="25.0" prefWidth="542.0" promptText="https://ivtips.mypay.kz" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -67,11 +68,11 @@
                   </FlowPane>
                   <FlowPane alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="630.0">
                      <children>
-                        <Label prefHeight="17.0" prefWidth="66.0" text="Identifier">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Id" wrappingWidth="62.0">
                            <FlowPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </FlowPane.margin>
-                        </Label>
+                        </Text>
                         <TextField id="idInput" alignment="BASELINE_LEFT" prefHeight="25.0" prefWidth="542.0" promptText="60EF114713DF2A2028CF888F34B9F620" />
                      </children>
                      <VBox.margin>
@@ -80,7 +81,7 @@
                   </FlowPane>
                   <FlowPane alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="630.0">
                      <children>
-                        <RadioButton id="userIdRadio" mnemonicParsing="false" prefHeight="17.0" prefWidth="85.0" selected="true" text="userId">
+                        <RadioButton id="userIdRadio" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="17.0" prefWidth="85.0" selected="true" text="userId">
                            <padding>
                               <Insets left="10.0" right="10.0" />
                            </padding></RadioButton>
@@ -95,15 +96,17 @@
                   </FlowPane>
                   <FlowPane alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="630.0">
                      <children>
-                        <Label prefHeight="17.0" prefWidth="66.0" text="Lang">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Language" wrappingWidth="62.0">
                            <FlowPane.margin>
                               <Insets left="10.0" right="10.0" />
-                           </FlowPane.margin></Label>
+                           </FlowPane.margin>
+                        </Text>
                         <ComboBox id="langCombo" editable="true" prefWidth="150.0" visibleRowCount="3" />
-                        <Label depthTest="DISABLE" prefHeight="17.0" prefWidth="63.0" text="Country">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Country" wrappingWidth="62.0">
                            <FlowPane.margin>
-                              <Insets left="10.0" />
-                           </FlowPane.margin></Label>
+                              <Insets left="10.0" right="10.0" />
+                           </FlowPane.margin>
+                        </Text>
                         <ComboBox id="countryCombo" editable="true" prefWidth="150.0" visibleRowCount="3" />
                      </children>
                      <VBox.margin>
@@ -115,31 +118,27 @@
                         <Insets bottom="5.0" top="5.0" />
                      </VBox.margin>
                      <children>
-                        <Label prefHeight="17.0" prefWidth="66.0" text="Result Link">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Result Link" wrappingWidth="62.0">
                            <FlowPane.margin>
                               <Insets left="10.0" right="10.0" />
-                           </FlowPane.margin>
-                        </Label>
-                        <Text id="resultLinkId" strokeType="OUTSIDE" strokeWidth="0.0" />
+                           </FlowPane.margin></Text>
+                        <Label fx:id="resultLinkId" prefHeight="25.0" prefWidth="542.0"></Label>
                      </children>
                   </FlowPane>
-                  <Button id="btn" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="613.0" text="Generate image and PDF">
+                  <Button id="btn" onMouseClicked="#onClickEvent" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="613.0" text="Generate image and PDF">
                      <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </VBox.margin>
                   </Button>
                   <FlowPane alignment="CENTER_LEFT" prefHeight="104.0" prefWidth="640.0">
                      <children>
-                        <Label alignment="BOTTOM_LEFT" text="QR-image">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="QR-Image" wrappingWidth="62.0">
                            <FlowPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </FlowPane.margin>
-                        </Label>
-                        <TextArea id="imageOutput" prefHeight="129.0" prefWidth="553.0">
-                           <FlowPane.margin>
-                              <Insets />
-                           </FlowPane.margin>
-                        </TextArea>
+                        </Text>
+                        <Label id="qrImage" prefHeight="65.0" prefWidth="539.0" />
+                        <TextArea id="qrImage2" editable="false" prefHeight="101.0" prefWidth="547.0" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
@@ -153,4 +152,4 @@
       </children>
     </AnchorPane>
   </children>
-</fx:root>
+</VBox>

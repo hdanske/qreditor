@@ -10,9 +10,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+
+import java.util.regex.Pattern;
 
 public class Controller {
     private static final Logger logger = LoggerFactory.getLogger(Controller.class);
@@ -26,21 +29,60 @@ public class Controller {
     @FXML
     private Label resultLinkId;
 
-
     @FXML
-    private Button btn;
+    private void setUrlInput() {
+
+        System.out.println("i am here");
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(urlInput.getText());
+        System.out.println("urlInput: " + urlInput.getText());
+        resultLinkId.setText(stringBuilder.toString());
+    }
 
 //    @FXML
-//    private void initialize (){
-//        btn.setOnAction(new EventHandler<ActionEvent>() {
+//    private void getResultLink() {
+//        resultLinkId.textProperty().addListener(new ChangeListener<String>() {
 //            @Override
-//            public void handle(ActionEvent event) {
-//                logger.toString();
+//            public void changed(ObservableValue<? extends String> observable,
+//                                String oldValue, String newValue) {
 //            }
 //        });
 //    }
 
     @FXML
+    private void initialize() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        urlInput.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+
+//                stringBuilder.append(newValue);
+               resultLinkId.setText(newValue);
+            }
+        });
+
+        idInput.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+
+//                stringBuilder.append(newValue);
+                resultLinkId.setText(newValue);
+            }
+        });
+
+        resultLinkId.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+            }
+        });
+    }
+
+
     void setResultLinkText() {
         urlInput = new TextField();
 //        resultLinkId = new Text();
@@ -54,8 +96,6 @@ public class Controller {
         });
     }
 
-    ;
-
     public void onClickEvent(MouseEvent mouseEvent) {
 //        Button btn = (Button) mouseEvent.getSource();
 //        resultLinkId.setText(resultLinkId.getText() + btn.getText());
@@ -66,17 +106,31 @@ public class Controller {
         System.out.println(resultLinkId.getText());
     }
 
+//    @FXML
+//    public void onKeyTyped(KeyEvent keyEvent) {
+//        StringBuilder stringBuilder = new StringBuilder();
+//
+//        stringBuilder.append(urlInput.getText());
+//        System.out.println("urlInput: " + urlInput.getText());
+//        resultLinkId.setText(stringBuilder.toString());
+//    }
 
-    public void onKeyTyped(KeyEvent keyEvent) {
-        resultLinkId.setText(keyEvent.getCharacter() + urlInput.getText());
+    private void setResultLink() {
+        StringBuilder stringBuilder = new StringBuilder();
 
-
-//        str += keyEvent.getCharacter();
-//        System.out.println(urlInput.getText());
+        stringBuilder.append(urlInput.getText());
+        System.out.println("urlInput: " + urlInput.getText());
+        resultLinkId.setText(stringBuilder.toString());
     }
+
+//    public void textChanged(InputMethodEvent inputMethodEvent) {
+//        if (inputMethodEvent.getComposed().) System.out.println("ololo");
+//        resultLinkId.setText(urlInput.getText());
+//
+//
+//    }
 
 //    public void addCharacter (String text) {
 //        resultLinkId.
 //    }
 }
-

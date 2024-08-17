@@ -13,6 +13,7 @@ public class Main extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sample.fxml"));
         Parent root = fxmlLoader.load();
+        
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
         primaryStage.setTitle("QR Editor");
